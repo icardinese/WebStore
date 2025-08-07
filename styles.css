@@ -1,0 +1,436 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    overflow-x: hidden;
+    font-family: "PP Neue Montreal";
+    height: 100vh;
+}
+img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.big-text {
+    font-size: 4rem;
+    font-weight: 500;
+    line-height: 1;
+}
+.spotlight-text {
+    font-size: 1.5rem;
+    font-weight: 500;
+    line-height: 1;
+    color: black;
+}
+#spotlight-header-text {
+    color: white;
+}
+section {
+    position: relative;
+    width: 100vw;
+    height: 100svh;
+    overflow: hidden;
+}
+.intro, .outro {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+    color: #fff;
+}
+.spotlight-intro-text-wrapper {
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    gap: 0.5rem;
+}
+.spotlight-intro-text {
+    flex: 1;
+    position: relative;
+    will-change: transform;
+}
+.spotlight-intro-text:nth-child(1) {
+    display: flex;
+    justify-content: flex-end;
+}
+.spotlight-bg-img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    transform: scale(0);
+    will-change: transform;
+}
+.spotlight-bg-img img {
+    transform: scale(1.5);
+    will-change: transform;
+}
+.spotlight-titles-container {
+    position: absolute;
+    top: 0;
+    left: 15vw;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    clip-path: polygon(
+            50svh 0px,
+            0px 50%,
+            50svh 100%,
+            100% calc(100% + 100svh),
+            100% - 100svh,
+    );
+    --before-opacity: 0;
+    --after-opacity: 0;
+}
+.spotlight-titles-container::before,
+.spotlight-titles-container::after {
+    content: "";
+    position: absolute;
+    width: 100svh;
+    height: 2.5px;
+    background: #ffffff;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    z-index: 10;
+}
+.spotlight-titles-container::before {
+    top: 0;
+    left: 0;
+    transform: rotate(-45deg) translate(-7rem);
+    opacity: var(--before-opacity);
+}
+.spotlight-titles-container::after {
+    bottom: 0;
+    left: 0;
+    transform: rotate(45deg) translate(-7rem);
+    opacity: var(--after-opacity);
+}
+.spotlight-titles {
+    position: relative;
+    left: 15%;
+    width: 75%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 5rem;
+    transform: translateY(100%);
+    z-index: 2;
+}
+.spotlight-titles h1 {
+    color: #fff;
+    opacity: 0.25;
+    transition: opacity 0.3s ease;
+}
+.spotlight-images {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 50%;
+    min-width: 300px;
+    height: 100%;
+    z-index: 1;
+    pointer-events: none;
+}
+.spotlight-img {
+    position: absolute;
+    width: 200px;
+    height: 150px;
+    will-change: transform;
+}
+.spotlight-header {
+    position: absolute;
+    top: 50%;
+    left: 10%;
+    transform: translateY(-50%);
+    color: #fff;
+    transition: opacity 0.3s ease;
+    z-index: 2;
+    opacity: 0;
+}
+
+#slideone-image {
+    width: 40%;
+}
+#slidetwo-image {
+    width: 40%;
+}
+.horizontal-image {
+    overflow: hidden;
+    max-width: 100%;
+    height: auto;
+}
+
+video {
+    overflow-x: hidden;
+    z-index: -99;
+}
+
+.video-background {
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.6s ease;
+    pointer-events: none; /* Ensures it doesn't block clicks */
+}
+
+.video-visible .video-background {
+    visibility: visible;
+    opacity: 1;
+}
+
+.races {
+    white-space: nowrap;
+    overflow-y: hidden;
+    display: flex;
+    flex-direction: row;
+    width: 300vw;
+    height: 100vh;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+.races::-webkit-scrollbar {
+    display: none;
+}
+
+#test {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    color: white;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 36px;
+    background: black;
+}
+
+.video-background {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    transform: translate(-50%, -50%);
+}
+
+/*#container {*/
+/*    height: 300vh;*/
+/*}*/
+#container::-webkit-scrollbar {
+    display: none;
+}
+
+.fill {
+    position: relative;
+    height: 100vh;
+}
+
+.gradient {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    background: linear-gradient(
+            180deg,
+            rgba(0,0,0,0) 0%,
+            rgba(0,0,0,1) 100%
+    );
+    z-index: 1;
+}
+
+#scrolly-settings {
+    height: 300vh;
+}
+#scrolly-video {
+    z-index: -1;
+}
+
+#bacteria {
+    color: #2ca324;
+}
+#fungi {
+    color: #edbc28;
+}
+#microbes {
+    color: #00ff26;
+}
+
+.smoothShow {
+    animation: smoothShow;
+    animation-fill-mode: both;
+    animation-timeline: view();
+    animation-range: entry 20% cover 60%;
+}
+@keyframes smoothShow {
+    0% {
+        opacity: 0;
+        transform: translateY(100px);
+        scale: 0.3;
+    }
+    50% {
+        opacity: 1;
+        transform: translateY(0);
+        scale: 1;
+    }
+    100% {
+        opacity: 0;
+        scale: 0;
+    }
+}
+
+.fade {
+    animation: fade;
+    animation-fill-mode: both;
+    animation-timeline: view();
+}
+
+@keyframes fade {
+    0% { opacity: 1; }
+    50% { opacity: 1;}
+    100% { opacity: 0; }
+}
+
+.box {
+    position: relative;
+    box-sizing: border-box;
+    padding: 5px 5px 5px 5px;
+    color: #ffffff;
+    justify-content: center;
+    text-align: center;
+    font-size: 18px;
+    width: 40%;
+    margin: 0 auto;
+}
+
+.box-horizontal {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    position: relative;
+    box-sizing: border-box;
+    padding: 5px 5px 5px 5px;
+    justify-content: center;
+    color: #ffffff;
+    text-align: left;
+    font-size: 18px;
+    width: 30%;
+    margin: 0 auto;
+}
+
+.center {
+    text-align: center;
+}
+
+.Slide {
+    position: relative;
+    overflow-x: hidden;
+    height: 100vh;
+}
+
+.horizontalSlide {
+    display: flex;
+    flex-direction: row;
+    overflow-x: hidden;
+    height: 100vh;
+    width: 100vw;
+    align-items: center;
+}
+
+.two {
+    background: black;
+}
+.three {
+    background: black;
+}
+
+.swipe-section {
+    position: relative;
+    height: 100vh;
+}
+.section-heading {
+    font-size: clamp(1rem, 8vw, 10rem);
+    font-weight: 600;
+    text-align: center;
+    margin-right: -0.5em;
+    width: 90vw;
+    max-width: 1200px;
+    text-transform: none;
+    color: white;
+}
+.curtainReveal {
+    height: 100%;
+    width: 100%;
+    top: 0;
+    position: fixed;
+    visibility: hidden;
+}
+.curtainReveal .outer,
+.curtainReveal .inner {
+    width: 100%;
+    height: 100%;
+    overflow-y: hidden;
+}
+.curtainReveal .bg {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    background-size: cover;
+    background-position: center;
+}
+.curtainReveal h2 {
+    z-index: 999;
+}
+.curtainReveal .clip-text {
+    overflow: hidden;
+}
+.first .bg {
+    background-image: linear-gradient(
+            180deg,
+            rgba(0, 0, 0, 0.6) 0%,
+            rgba(0, 0, 0, 0.1) 100%
+    ),
+    url("https://assets.codepen.io/16327/site-landscape-1.jpg");
+}
+.second .bg {
+    background-image: linear-gradient(
+            180deg,
+            rgba(0, 0, 0, 0.6) 0%,
+            rgba(0, 0, 0, 0.1) 100%
+    ),
+    url("https://assets.codepen.io/16327/site-landscape-5.jpeg");
+}
+.third .bg {
+    background-image: linear-gradient(
+            180deg,
+            rgba(0, 0, 0, 0.6) 0%,
+            rgba(0, 0, 0, 0.1) 100%
+    ),
+    url("https://assets.codepen.io/16327/site-landscape-2.jpg");
+}
+.fourth .bg {
+    background-image: linear-gradient(
+            180deg,
+            rgba(0, 0, 0, 0.6) 0%,
+            rgba(0, 0, 0, 0.1) 100%
+    ),
+    url("https://assets.codepen.io/16327/site-landscape-6.jpg");
+}
+.fifth .bg {
+    background-image: linear-gradient(
+            180deg,
+            rgba(0, 0, 0, 0.6) 0%,
+            rgba(0, 0, 0, 0.1) 100%
+    ),
+    url("https://assets.codepen.io/16327/site-landscape-8.jpg");
+    background-position: 50% 45%;
+}
