@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="test.css">
+  <title>Test</title>
+</head>
+<body>
+  <div id="wrapper">
+
+    <div id="canvas_container"></div>
+
+    <div class="text">
+      <p class="quoteText"> Ingredients that were each intentionally
+        <br><span style="font-style: italic; font-size: 2.5rem; color:#ED760D">CHOSEN.</span></p>
+    </div>
+    <p class="clickInfo">Our Ingredients (Click anywhere to continue)</p>
+
+    <svg style="display: none;">
+      <filter id="displacementFilter">
+        <feImage preserveAspectRatio="none"
+                 href="https://img.freepik.com/premium-photo/modern-green-red-gradient-color-background_849102-12460.jpg?w=360"></feImage>
+        <feDisplacementMap in= "SourceGraphic"
+                           scale ="200" xChannelSelector="R" yChannelSelector="G"></feDisplacementMap>
+      </filter>
+    </svg>
+
+    <div class="Alive-Pixel-Slide" id="Slide-One-Elements">
+      <div class="ingredients-wrapper">
+        <div class="card" id="ingredient1">
+          <p class="ingredient-chemical-name">Lactobacillus acidophilus & bifidobacterium lactis</p>
+          <div class="ingredient-line-seperation"></div>
+          <p>Helps restore balance to gut bacteria, reducing fermentation that causes bloating.</p>
+        </div>
+        <div class="card" id="ingredient2">
+          <p class="ingredient-chemical-name">Multi-strain probiotics + prebiotic fructooligosaccharides (FOS)</p>
+          <div class="ingredient-line-seperation"></div>
+          <p>Supports smoother digestion and better absorption of vitamins and minerals from food.</p>
+        </div>
+      </div>
+
+      <div class="ingredients-wrapper" id="ingredients-wrapper-2">
+        <div class="card" id="ingredient3">
+          <p class="ingredient-chemical-name">40 Billion CFU</p>
+          <div class="ingredient-line-seperation"></div>
+          <p>From four clinically studied strains encourage a diverse, thriving gut environment.</p>
+        </div>
+        <div class="card" id="ingredient4">
+          <p class="ingredient-chemical-name">L. plantarum and L. paracasei</p>
+          <div class="ingredient-line-seperation"></div>
+          <p>Initiates immune responses and help your body defend against pathogens.</p>
+        </div>
+      </div>
+
+      <div class="ingredients-wrapper" id="ingredients-wrapper-3">
+        <div class="card" id="ingredient5">
+          <p>A balanced gut microbiome can positively influence neurotransmitter production, supporting calmer mood and mental clarity.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="Alive-Pixel-Slide" id="Slide-Two-Elements">
+      <div class="ingredients-wrapper">
+        <div class="card">
+          <p>TEST FJEIOAFJ ESOIFESJ;OA FEISJF; AIESJOF;ASIFJEOAS;FJ IOAS;JF EIOSDAFJ;OSEFJ OASI;EFJOAS;</p>
+        </div>
+      </div>
+    </div>
+
+    <img id="first" src="https://cdn.shopify.com/s/files/1/0707/0387/4148/files/test-product-image.jpg?v=1755232105" style="display:none;">
+
+    <!--        <a href="https://www.isladjan.com/work/3/quotes/" target="_blank" class="btn btn_works">New Version</a>-->
+<!--    <button class="btn" id="fullscr">Go Fullscreen</button>-->
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/Observer.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@latest/bundled/lenis.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/scrolly-video@latest/dist/scrolly-video.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/Flip.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.179.1/build/three.min.js"></script>
+  <script src="https://unpkg.com/three@0.152.2/build/three.min.js"></script>
+  <script src="test.js"></script>
+</body>
+</html>

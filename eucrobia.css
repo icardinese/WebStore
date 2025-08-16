@@ -8,7 +8,7 @@ body {
     font-family: "PP Neue Montreal";
     height: 100vh;
 }
-img {
+.img {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -349,88 +349,205 @@ video {
     background: black;
 }
 
-.swipe-section {
+
+/* This is for timeline animations */
+:root {
+    --color-black: black;
+    --color-white: white;
+    --color-grey: #494949;
+    --sticky-top-pos: 30vh;
+    --buffer: 5rem;
+}
+
+.timeline-container {
+    margin: 0;
+    border: 0;
+    background-color: var(--color-black);
+    color: var(--color-white);
+}
+
+.timeline {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.timeline__section {
+    display: grid;
+    grid-template-columns: auto 5px 50px auto;
+    align-items: start;
+    position: relative;
+}
+
+.timeline__left {
+    font-size: 2.5rem;
+    text-align: right;
+    text-transform: uppercase;
+}
+
+.timeline__left,
+.timeline__middle,
+.timeline__tracker {
+    position: sticky;
+    top: var(--sticky-top-pos);
+    /*   margin-bottom: var(--buffer); */
+}
+
+.timeline__left,
+.timeline__middle {
+    margin-bottom: var(--buffer);
+}
+
+.timeline__right {
+    background: rgb(255, 255, 255);
+    background: linear-gradient(
+            180deg,
+            rgba(255, 255, 255, 1) 0%,
+            rgba(255, 255, 255, 1) 0%,
+            rgba(128, 128, 128, 1) 0%,
+            rgba(128, 128, 128, 1) 100%
+    );
+}
+
+.timeline__right > div {
+    background-color: var(--color-black);
+    padding-bottom: var(--buffer);
+    padding-left: 45px;
+    margin-left: 4px;
+}
+
+.timeline__date > div:first-child {
+    font-size: 1.3rem;
+}
+
+.timeline__bullet {
+    --bullet-dims: 20px;
+    background-color: var(--color-white);
+    width: var(--bullet-dims);
+    height: var(--bullet-dims);
+    border-radius: 99999%;
+    transform: translateX(calc(var(--bullet-dims) / 2 + 2px));
+    float: right;
+}
+
+.timeline__content {
+    font-size: 3rem;
+    color: var(--color-grey);
+    transition: color 1s cubic-bezier(0, 0.39, 0.58, 1);
+}
+
+.animate-on-scroll {
+    color: var(--color-white);
+}
+/* This is for timeline animations */
+
+/* Pixels that are alive animations */
+#wrapper {
     position: relative;
     height: 100vh;
-}
-.section-heading {
-    font-size: clamp(1rem, 8vw, 10rem);
-    font-weight: 600;
-    text-align: center;
-    margin-right: -0.5em;
-    width: 90vw;
-    max-width: 1200px;
-    text-transform: none;
-    color: white;
-}
-.curtainReveal {
-    height: 100%;
-    width: 100%;
-    top: 0;
-    position: fixed;
-    visibility: hidden;
-}
-.curtainReveal .outer,
-.curtainReveal .inner {
-    width: 100%;
-    height: 100%;
-    overflow-y: hidden;
-}
-.curtainReveal .bg {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    top: 0;
-    background-size: cover;
-    background-position: center;
-}
-.curtainReveal h2 {
-    z-index: 999;
-}
-.curtainReveal .clip-text {
+    background: #000;
+    font-family: 'Comfortaa', cursive;
     overflow: hidden;
 }
-.first .bg {
-    background-image: linear-gradient(
-            180deg,
-            rgba(0, 0, 0, 0.6) 0%,
-            rgba(0, 0, 0, 0.1) 100%
-    ),
-    url("https://assets.codepen.io/16327/site-landscape-1.jpg");
+
+#canvas_container {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 0;
 }
-.second .bg {
-    background-image: linear-gradient(
-            180deg,
-            rgba(0, 0, 0, 0.6) 0%,
-            rgba(0, 0, 0, 0.1) 100%
-    ),
-    url("https://assets.codepen.io/16327/site-landscape-5.jpeg");
+
+canvas {
+    display: block;
 }
-.third .bg {
-    background-image: linear-gradient(
-            180deg,
-            rgba(0, 0, 0, 0.6) 0%,
-            rgba(0, 0, 0, 0.1) 100%
-    ),
-    url("https://assets.codepen.io/16327/site-landscape-2.jpg");
+
+.text {
+    width: 100%;
+    height: 100px;
+    text-align: center;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    cursor: pointer;
+    color: rgb(255, 255, 255);
+    background-color: rgba(0, 0, 0, 0.81);
+    font-size: 1.6rem;
+    line-height: 1.5;
+    user-select: none;
+    overflow: hidden;
+    display: flex;
+    align-items:center;
 }
-.fourth .bg {
-    background-image: linear-gradient(
-            180deg,
-            rgba(0, 0, 0, 0.6) 0%,
-            rgba(0, 0, 0, 0.1) 100%
-    ),
-    url("https://assets.codepen.io/16327/site-landscape-6.jpg");
+
+.text span {
+    color: #e7aa27;
 }
-.fifth .bg {
-    background-image: linear-gradient(
-            180deg,
-            rgba(0, 0, 0, 0.6) 0%,
-            rgba(0, 0, 0, 0.1) 100%
-    ),
-    url("https://assets.codepen.io/16327/site-landscape-8.jpg");
-    background-position: 50% 45%;
+
+.text .quoteText {
+    width: 85%;
+    margin: 0 auto;
+}
+
+.text .quoteText span {
+    font-weight: 700;
+}
+
+.clickInfo {
+    width: 100%;
+    text-align: center;
+    position: absolute;
+    left: 0;
+    /*top: -80px;*/
+    z-index: 11;
+    cursor: pointer;
+    color: #F9B31C;
+    background-color: rgba(23, 23, 23, 0.9);
+    padding: 10px 0;
+    font-size: 20px;
+}
+
+.btn {
+    position: absolute;
+    bottom: 5%;
+    right: 0px;
+    transform: translateX(-50%);
+    border: 1px solid white;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    padding: 0.5rem 0.7em;
+    background: transparent;
+    color: #F9B31C;
+    -webkit-font-smoothing: antialiased;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all .3s;
+    z-index: 11;
+}
+
+.btn_works {
+    left: 100px;
+    right: unset;
+    text-decoration: none;
+}
+
+.btn:hover {
+    background: #ffffff;
+    color: #2a2b2f;
+}
+
+@media only screen and (max-width:815px) {
+    .text {
+        font-size: 1.2rem;
+    }
+
+    .text span {
+        afont-size: 0.8rem !important;
+    }
+
+    .clickInfo {
+        font-size: 1rem;
+    }
 }
